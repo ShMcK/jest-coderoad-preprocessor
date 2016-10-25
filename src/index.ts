@@ -1,27 +1,29 @@
-interface JestTestResult {
-  title: string;
-  status: 'failed' | 'pending' | 'passed';
-  ancestorTitles: string[];
-  failureMessages: string[];
-  testFilePath: string;
-}
+import {JestTestSuiteResult, TestOutput} from './typings'
+import { writeFileSync } from 'fs'
 
-interface JestTestSuiteResult {
-  success: boolean;
-  testResults: JestTestResult[];
-}
+const processor = (testResult: JestTestSuiteResult) => {
 
-interface TestOutput {
-  success: boolean; // all tests passed?
-  msg: string; // failure message (describe + it)
-  taskPosition: number; // index of failed test
-  // timedOut: boolean;
-}
+  let output: TestOutput
 
-const process = (options = {}) => (testResult: JestTestResult) => {
-  process.stdout.write('Hello World')
-  process.stdout.write('options = ', options)
-  process.stdout.write('test result = ', testResult)
+  // success
+  if (testResult.success) {
+    output = {
+      success: true,
+      msg: 'passed',
+      taskPosition: 0,
+    }
+
+  // failure
+  } else {
+    output = {
+      success: false,
+      msg: 'failed',
+      taskPosition: 0,
+    }
+  }
+
+  // output as text
+  process.stdout.write(JSON.stringify(output))
 }
 
 module.exports = processor

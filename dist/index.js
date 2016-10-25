@@ -1,9 +1,22 @@
-var process = function (options) {
-    if (options === void 0) { options = {}; }
-    return function (testResult) {
-        process.stdout.write('Hello World');
-        process.stdout.write('options = ', options);
-        process.stdout.write('test result = ', testResult);
-    };
+"use strict";
+var processor = function (testResult) {
+    var output;
+    // success
+    if (testResult.success) {
+        output = {
+            success: true,
+            msg: 'passed',
+            taskPosition: 0,
+        };
+    }
+    else {
+        output = {
+            success: false,
+            msg: 'failed',
+            taskPosition: 0,
+        };
+    }
+    process.stdout.write('test result');
+    process.stdout.write(JSON.stringify(output));
 };
 module.exports = processor;
