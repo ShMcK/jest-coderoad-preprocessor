@@ -1,11 +1,12 @@
 {
-  "name": "example",
+  "name": "jest-coderoad-preprocessor-example",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
+  "private": true,
   "keywords": [],
   "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
   "license": "ISC",

@@ -1,7 +1,7 @@
 {
-  "name": "jest-results-processor",
+  "name": "jest-coderoad-results-processor",
   "version": "0.1.0",
-  "description": "",
+  "description": "capture jest test runner output for CodeRoad tests",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
