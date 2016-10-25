@@ -4,11 +4,17 @@ export interface JestTestResult {
   ancestorTitles: string[];
   failureMessages: string[];
   testFilePath: string;
+  console: string[];
+}
+
+export interface JestTestResultList {
+  numFailingTests: number;
+  testResults: JestTestResult[];
 }
 
 export interface JestTestSuiteResult {
   success: boolean;
-  testResults: JestTestResult[];
+  testResults: JestTestResultList[];
 }
 
 export interface TestOutput {

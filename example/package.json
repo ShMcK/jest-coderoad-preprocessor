@@ -13,7 +13,6 @@
     "jest-results-processor": "^0.1.0"
   },
   "jest": {
-    "bail": true,
     "testResultsProcessor": "../dist/index",
     "testPathDirs": ["tests"]
   }

@@ -1,4 +1,4 @@
-import {JestTestSuiteResult, TestOutput} from './typings'
+import {JestTestSuiteResult, JestTestResultList, JestTestResult, TestOutput} from './typings'
 import { writeFileSync } from 'fs'
 
 const processor = (testResult: JestTestSuiteResult) => {
@@ -15,10 +15,14 @@ const processor = (testResult: JestTestSuiteResult) => {
 
   // failure
   } else {
+
+    const firstFailSuite: JestTestResultList = testResult.testResults.filter(x => x.numFailingTests > 0)[0]
+    const firstFailTest: JestTestResult = firstFailSuite.testResults.filter(x => x.status === 'failed')[0]
+
     output = {
       success: false,
-      msg: 'failed',
-      taskPosition: 0,
+      msg: firstFailTest.title,
+      taskPosition: parseInt(firstFailTest.ancestorTitles[0]),
     }
   }
 
