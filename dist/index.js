@@ -6,3 +6,4 @@ var process = function (options) {
         process.stdout.write('test result = ', testResult);
     };
 };
+module.exports = processor;

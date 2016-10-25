@@ -1,4 +1,4 @@
-type JestTestResult = {
+interface JestTestResult {
   title: string;
   status: 'failed' | 'pending' | 'passed';
   ancestorTitles: string[];
@@ -6,12 +6,12 @@ type JestTestResult = {
   testFilePath: string;
 }
 
-type JestTestSuiteResult = {
+interface JestTestSuiteResult {
   success: boolean;
   testResults: JestTestResult[];
 }
 
-type TestOutput = {
+interface TestOutput {
   success: boolean; // all tests passed?
   msg: string; // failure message (describe + it)
   taskPosition: number; // index of failed test
@@ -23,3 +23,5 @@ const process = (options = {}) => (testResult: JestTestResult) => {
   process.stdout.write('options = ', options)
   process.stdout.write('test result = ', testResult)
 }
+
+module.exports = processor
